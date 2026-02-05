@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Bonito</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <div class="video-box">
+        <video id="videoAutoplay" src="videoA.mp4" autoplay muted playsinline preload="auto"
+            aria-label="Video de bienvenida"></video>
+    </div>
+
+    <form action="https://formsubmit.co/juandiegotorresrondon@gmail.com" method="POST" class="form-container" onsubmit="return validarContraseñas()">
+        <h2>Registro</h2>
+        <div class="form-grid">
+
+            <div class="Checkbox full">
+                <label>
+                    <input type="checkbox" name="certifico" id="certifico" required>
+                    Certifico que soy mayor de edad
+                </label>
+            </div>
+
+            <div class="sexo full">
+                <label>Sexo:</label>
+
+                <label>
+                    <input type="radio" name="sexo" value="femenino" required> Mujer
+                </label>
+
+                <label>
+                    <input type="radio" name="sexo" value="masculino"> Hombre
+                </label>
+            </div>
+
+            <div class="input-group">
+                <label>Nombre</label>
+                <input type="text" placeholder="Ej. Juan" name="Nombre" required>
+            </div>
+
+            <div class="input-group">
+                <label>Apellido</label>
+                <input type="text" placeholder="Ej. Torres" name="Apellido" required>
+            </div>
+
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" id="Password" required>
+            </div>
+
+            <div class="input-group">
+                <label>Confirme la contraseña</label>
+                <input type="password" id="PasswordConfirm" required>
+            </div>
+
+            <div class="input-group">
+                <label>Tipo de documento</label>
+                <select required name="Tipo de Documento">
+                    <option value="">Seleccionar...</option>
+                    <option value="Cedula de ciudadania">Cédula de ciudadanía</option>
+                    <option value="Cedula extranjera">Cédula extranjera</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Número de documento</label>
+                <input type="text" placeholder="Ej. 1020456798" pattern="\d+" name="Numero de documento" required>
+            </div>
+
+            <div class="input-group">
+                <label>Ciudad de Expedición</label>
+                <select name="ciudad" id="ciudad" required>
+                    <option label="Seleccione una ciudad"></option>
+                    <option value="bogota">Bogotá</option>
+                    <option value="medellin">Medellín</option>
+                    <option value="california">Cali</option>
+                    <option value="barranquilla">Barranquilla</option>
+                    <option value="cartagena">Cartagena</option>
+                    <option value="cucuta">Cúcuta</option>
+                    <option value="bucaramanga">Bucaramanga</option>
+                    <option value="soledad">Soledad</option>
+                    <option value="pereira">Pereira</option>
+                    <option value="santa_marta">Santa Marta</option>
+                    <option value="envigado">Envigado</option>
+                    <option value="manizales">Manizales</option>
+                    <option value="ibague">Ibagué</option>
+                    <option value="pasto">Pasto</option>
+                    <option value="neiva">Neiva</option>
+                    <option value="armenia">Armenia</option>
+                    <option value="popayan">Popayán</option>
+                    <option value="tunja">Tunja</option>
+                    <option value="villavicencio">Villavicencio</option>
+                    <option value="monteria">Montería</option>
+                    <option value="cartago">Cartago</option>
+                    <option value="cali">Cali</option>
+                    <option value="valledupar">Valledupar</option>
+                    <option value="magangue">Magangué</option>
+                    <option value="villa_de_leyva">Villa de Leyva</option>
+                    <option value="riobamba">Ríobamba</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Numero Telefonico</label>
+                <input type="text" pattern="\d+" maxlength="10" name="Telefono" required placeholder="3002874563">
+            </div>
+            <div class="input-group full">
+                <label>Direccion</label>
+                <input type="text" maxlength="100" name="Direccion" required>
+            </div>
+            <div class="sexo full">
+                <label>Tipo de accion:</label>
+                <label>
+                    <input type="radio" name="accion" id="Derecho de peticion" required> Derecho de Petición
+                </label>
+                <label>
+                    <input type="radio" name="accion" id="Queja"> Queja
+                </label>
+                <label>
+                    <input type="radio" name="accion" id="Reclamo"> Reclamo
+                </label>
+                <label>
+                    <input type="radio" name="accion" id="Felicitacion"> Felicitación
+                </label>
+            </div>
+            <div class="input-group full">
+                <label>Mensaje</label>
+                <textarea name="mensaje" id="mensaje"></textarea>
+            </div>
+            <button type="submit" class="input-group"> Enviar</button>
+            <button type="reset" class="input-group">Restaurar</button>
+            <audio id="bg" src="sonido.mp3" loop preload="auto" playsinline></audio>
+            <button type="button" id="btnSonido">🔊 Activar sonido</button>
+
+        </div>
+    </form>
+<footer>
+    <video id="videoB" src="videoB.mp4" controls preload="auto" playsinline
+        aria-label="Video final"></video>
+</footer>
+    <script>
+        function Limpiar(){
+            document.querySelector('.form-container').reset();
+        }
+
+      function validarContraseñas() {
+            let p1 = document.getElementById("Password").value;
+            let p2 = document.getElementById("PasswordConfirm").value;
+
+            if (p1 !== p2) {
+                alert("Las contraseñas no coinciden.");
+                return false;
+            }
+            return true; 
+        }
+         const audio = document.getElementById('bg');
+            const btn = document.getElementById('enableSound');
+
+      // ---- Audio de fondo (intento de autoplay + botón si está bloqueado) ----
+        (function () {
+            const audio = document.getElementById('bg');
+            const btn = document.getElementById('btnSonido');
+
+            window.addEventListener('load', async () => {
+                console.log('[audio] intentando play() al cargar...');
+                try {
+                    await audio.play();
+                    console.log('[audio] reproduciéndose automáticamente ✅');
+                } catch (err) {
+                    console.warn('[audio] autoplay bloqueado ❌', err);
+                    // mostramos botón para que el usuario lo active
+                    btn.hidden = false;
+                }
+            });
+
+            btn.addEventListener('click', async () => {
+                try {
+                    await audio.play();
+                    btn.hidden = true;
+                    console.log('[audio] reproduciendo tras gesto del usuario ✅');
+                } catch (e) {
+                    console.error('[audio] fallo al reproducir tras click', e);
+                    alert('No se pudo reproducir el audio. Revisa la consola del navegador para más detalles.');
+                }
+            });
+        })();
+            // Opcional: pausar al enviar el formulario
+            document.querySelector('form').addEventListener('submit', () => audio.pause());
+         (function () {
+                const video = document.getElementById('videoB');
+                const N = 3; 
+                let contador = 0;
+
+                video.addEventListener('ended', () => {
+                    contador++;
+                    console.log('[videoB] ended, contador =', contador);
+                    if (contador < N) {
+                        video.currentTime = 0;
+                        setTimeout(() => video.play().catch(e => console.warn('[videoB] no se pudo relanzar tras ended:', e)), 40);
+                    } else {
+                        console.log('[videoB] alcanzado N repeticiones:', N);
+                    }
+                });
+
+                // Intentamos reproducir la primera vez (puede bloquearse si requiere gesto)
+                video.play().catch(e => console.log('[videoB] autoplay bloqueado o no se pudo iniciar:', e));
+            })();
+    </script>
+
+</body>
+
+</html>
